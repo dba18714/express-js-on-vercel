@@ -20,8 +20,12 @@ app.get('/counter', function (req, res) {
 });
 
 app.get('/sleep', function (req, res) {
+    // 计算执行时间
+    const startTime = Date.now();
 	setTimeout(() => {
-		res.send('Done');
+		const endTime = Date.now();
+		const executionTime = endTime - startTime;
+		res.send(`Done in ${executionTime}ms`);
 	}, req.query.s * 1000);
 });
 
