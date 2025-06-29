@@ -19,6 +19,12 @@ app.get('/counter', function (req, res) {
 	res.send(`Counter: ${counter}`);
 });
 
+app.get('/sleep', function (req, res) {
+	setTimeout(() => {
+		res.send('Done');
+	}, req.query.s * 1000);
+});
+
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, '..', 'components', 'home.htm'));
 });
