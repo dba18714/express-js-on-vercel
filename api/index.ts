@@ -10,7 +10,14 @@ const path = require('path');
 // Create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+let counter = 0;
+
 app.use(express.static('public'));
+
+app.get('/counter', function (req, res) {
+	counter++;
+	res.send(`Counter: ${counter}`);
+});
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, '..', 'components', 'home.htm'));
